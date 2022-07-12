@@ -1,0 +1,25 @@
+{
+  "name": "cypress-training",
+  "version": "1.0.0",
+  "description": "This is a Workshop about Cypress",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rendxn/cypress-training.git"
+  },
+  "keywords": [
+    "ui-testing",
+    "dojo",
+    "practice",
+    "cypress"
+  ],
+  "author": "Santiago Rendón <santiago.rendong@perficient.com> (Rendxn)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rendxn/cypress-training/issues"
+  },
+  "homepage": "https://github.com/Rendxn/cypress-training#readme"
+}
