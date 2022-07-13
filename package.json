@@ -4,7 +4,6 @@
   "description": "This is a Workshop about Cypress",
   "main": "index.js",
   "scripts": {
-    "test": "cypress open",
     "test:open": "cypress open"
   },
   "repository": {
