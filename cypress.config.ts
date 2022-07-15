@@ -7,6 +7,8 @@ export default defineConfig({
     video: false,
     screenshotOnRunFailure: false,
     setupNodeEvents(on, config) {
+      config.defaultCommandTimeout = 20000;
+      config.responseTimeout = 20000;
       // modify config values examples
       // config.defaultCommandTimeout = 10000
 
