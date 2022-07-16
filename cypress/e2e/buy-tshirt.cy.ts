@@ -47,6 +47,6 @@ describe("Buy a t-shirt", () => {
 
     orderSummaryPage
       .getConfirmationMessage()
-      .should("have.text", orderSummaryPage.expectedMessage);
+      .should("have.text", "Your order on My Store is complete.");
   });
 });
