@@ -11,42 +11,48 @@ import {
   SummaryStepPage,
 } from "../page/index";
 
-const menuContentPage: MenuContentPage = new MenuContentPage();
-const productListPage: ProductListPage = new ProductListPage();
-const productAddedModalPage: ProductAddedModalPage =
-  new ProductAddedModalPage();
-const summaryStepPage: SummaryStepPage = new SummaryStepPage();
-
-const signInStepPage: SignInStepPage = new SignInStepPage();
-
-const addressStepPage: AddressStepPage = new AddressStepPage();
-const shippingStepPage: ShippingStepPage = new ShippingStepPage();
-
-const paymentStepPage: PaymentStepPage = new PaymentStepPage();
-const bankPaymentStepPage: BankPaymentPage = new BankPaymentPage();
-
-const orderSummaryPage: OrderSummaryPage = new OrderSummaryPage();
-
 describe("Buy a t-shirt", () => {
+  let menuContentPage: MenuContentPage;
+  let productListPage: ProductListPage;
+  let productAddedModalPage: ProductAddedModalPage;
+  let summaryStepPage: SummaryStepPage;
+  let signInStepPage: SignInStepPage;
+  let addressStepPage: AddressStepPage;
+  let shippingStepPage: ShippingStepPage;
+  let paymentStepPage: PaymentStepPage;
+  let bankPaymentPage: BankPaymentPage;
+  let orderSummaryPage: OrderSummaryPage;
+  let expectedMessage: string;
+
+  before(() => {
+    menuContentPage = new MenuContentPage();
+    productListPage = new ProductListPage();
+    productAddedModalPage = new ProductAddedModalPage();
+    summaryStepPage = new SummaryStepPage();
+    signInStepPage = new SignInStepPage();
+    addressStepPage = new AddressStepPage();
+    shippingStepPage = new ShippingStepPage();
+    paymentStepPage = new PaymentStepPage();
+    bankPaymentPage = new BankPaymentPage();
+    orderSummaryPage = new OrderSummaryPage();
+    expectedMessage = "Your order on My Store is complete.";
+  });
+
   it("then the t-shirt should be bought", () => {
     menuContentPage.visitMenuContentPage();
     menuContentPage.goToTShirtMenu();
     productListPage.addToCart();
     productAddedModalPage.goToCheckout();
     summaryStepPage.goToCheckout();
-
     signInStepPage.signIn("aperdomobo@gmail.com", "WorkshopProtractor");
-
     addressStepPage.goToCheckout();
-
     shippingStepPage.acceptTerms();
     shippingStepPage.goToCheckout();
-
     paymentStepPage.payByWire();
-    bankPaymentStepPage.confirmOrder();
+    bankPaymentPage.confirmOrder();
 
     orderSummaryPage
       .getConfirmationMessage()
-      .should("have.text", "Your order on My Store is complete.");
+      .should("have.text", expectedMessage);
   });
 });
