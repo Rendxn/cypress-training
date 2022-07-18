@@ -1,6 +1,5 @@
 {
   "singleQuote": false,
-  "bracketSpacing": false,
   "endOfLine": "auto",
   "quoteProps": "consistent"
 }

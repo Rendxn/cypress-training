@@ -23,6 +23,6 @@
     "cypress/no-force": "warn",
     "no-unused-vars": "warn",
     "require-jsdoc": "off",
-    "max-len": ["error", {"code": 120}]
+    "max-len": ["error", { "code": 120 }]
   }
 }
