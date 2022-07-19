@@ -23,6 +23,9 @@ describe("Buy a t-shirt", () => {
   let bankPaymentPage: BankPaymentPage;
   let orderSummaryPage: OrderSummaryPage;
   let expectedMessage: string;
+  let username: string;
+  let password: string;
+  let productName: string;
 
   before(() => {
     menuContentPage = new MenuContentPage();
@@ -36,15 +39,18 @@ describe("Buy a t-shirt", () => {
     bankPaymentPage = new BankPaymentPage();
     orderSummaryPage = new OrderSummaryPage();
     expectedMessage = "Your order on My Store is complete.";
+    productName = "Faded Short Sleeve T-shirts";
+    username = "aperdomobo@gmail.com";
+    password = "WorkshopProtractor";
   });
 
   it("then the t-shirt should be bought", () => {
     menuContentPage.visitMenuContentPage();
     menuContentPage.goToTShirtMenu();
-    productListPage.addToCart();
+    productListPage.addToCart(productName);
     productAddedModalPage.goToCheckout();
     summaryStepPage.goToCheckout();
-    signInStepPage.signIn("aperdomobo@gmail.com", "WorkshopProtractor");
+    signInStepPage.signIn(username, password);
     addressStepPage.goToCheckout();
     shippingStepPage.acceptTerms();
     shippingStepPage.goToCheckout();
