@@ -4,10 +4,15 @@
   "description": "This is a Workshop about Cypress",
   "main": "index.js",
   "scripts": {
+    "pretest": "npm run delete:reports",
     "test": "cypress run",
+    "posttest": "npm run combine:reports && npm run generate:reports",
     "test:open": "npm run lint && cypress open",
     "lint": "eslint ./cypress/e2e/**/*.ts",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "delete:reports": "rimraf cypress/reports",
+    "combine:reports": "mochawesome-merge cypress/reports/mocha/*.json > cypress/reports/report.json",
+    "generate:reports": "marge cypress/reports/report.json -f report -o cypress/reports"
   },
   "repository": {
     "type": "git",
@@ -29,12 +34,19 @@
     "@typescript-eslint/eslint-plugin": "^5.30.6",
     "@typescript-eslint/parser": "^5.30.6",
     "cypress": "^10.3.0",
+    "cypress-mochawesome-reporter": "^3.2.0",
+    "cypress-multi-reporters": "^1.6.1",
     "eslint": "^8.19.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-prettier": "^4.2.1",
+    "mocha": "^10.0.0",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.2.1",
+    "mochawesome-report-generator": "^6.2.0",
     "prettier": "2.7.1",
+    "rimraf": "^3.0.2",
     "typescript": "^4.7.4"
   },
   "volta": {
