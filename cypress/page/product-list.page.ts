@@ -12,7 +12,7 @@ export class ProductListPage {
     product.find(this.addToCartBtn).click();
   }
 
-  public findProductByName(
+  private findProductByName(
     name: string
   ): Cypress.Chainable<JQuery<HTMLElement>> {
     return cy.get(this.productContainer).filter(`:contains("${name}")`);
