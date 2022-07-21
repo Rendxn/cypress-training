@@ -38,31 +38,19 @@ class PersonalFormPage {
     cy.get(this.firstNameInput).type(data.firstName);
     cy.get(this.lastNameInput).type(data.lastName);
     cy.get(this.emailInput).type(data.email);
-
-    // Since the ::before pseudo-element of the label for this radio
-    // is "covering" the input, the user (Cypress)
-    // "can't see it", therefore `force` is needed.
     cy.get(this.genderInput)
       .filter(`[value="${data.gender}"]`)
       .check({ force: true });
-
-    // {selectall} is necessary, because .clear() will
-    // make the page crash...
     cy.get(this.birthInput).type("{selectall}").type(data.dateOfBirth);
-
     data.hobbies.forEach((hobbie) => {
       cy.get(this.hobbiesInput)
         .filter(`[value="${HobbiesOptions[hobbie]}"]`)
         .check({ force: true });
     });
-
     cy.get(this.mobileInput).type(data.mobileNumber);
     cy.get(this.addressInput).type(data.currentAddress);
     cy.get(this.stateInput).type(data.state, { force: true }).type("{enter}");
     cy.get(this.cityInput).type(data.city, { force: true }).type("{enter}");
-
-    // The button is covered by the footer when the viewport
-    // is not high enough.
     cy.get(this.submitButton).type("{enter}", { force: true });
   }
 
@@ -70,7 +58,6 @@ class PersonalFormPage {
     expectedMessage: string,
     expectedValues: IPersonalFormData
   ) {
-    // Parse and format the date :pain:
     const date = new Date(expectedValues.dateOfBirth);
     const month = date.toLocaleString("default", {
       month: "long",
