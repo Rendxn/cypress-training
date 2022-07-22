@@ -9,7 +9,7 @@ import {
   ShippingStepPage,
   SignInStepPage,
   SummaryStepPage,
-} from "../page/index";
+} from "../page";
 
 describe("Buy a t-shirt", () => {
   let menuContentPage: MenuContentPage;
