@@ -10,3 +10,4 @@ export { OrderSummaryPage } from "./order-summary.page";
 export { BankPaymentPage } from "./bank-payment.page";
 export { DressesListPage } from "./dresses-list.page";
 export { PersonalFormPage, IPersonalFormData } from "./personal-form.page";
+export { UploadPage } from "./upload.page";
