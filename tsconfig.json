@@ -4,7 +4,8 @@
     "skipLibCheck": true,
     "strict": true,
     "lib": ["es5", "dom"],
-    "types": ["cypress", "node"]
+    "types": ["node", "cypress", "cypress-file-upload"],
+    "baseUrl": "./"
   },
   "include": ["cypress/**/*.ts", "cypress.config.ts"],
   "exclude": ["node_modules/"]
