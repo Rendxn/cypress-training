@@ -12,3 +12,4 @@ export { DressesListPage } from "./dresses-list.page";
 export { PersonalFormPage, IPersonalFormData } from "./personal-form.page";
 export { UploadPage } from "./upload.page";
 export { DownloadPage } from "./download.page";
+export { IframePage } from "./iframe.page";
