@@ -3,14 +3,14 @@ export class IframePage {
   private pageURL: string;
   private iframeTitle: string;
   private iframeSelector: string;
-  private iframeURL: string;
+  private cssFrameUrl: string;
 
   constructor() {
     this.cssNavElement = "a[title='CSS Tutorial']";
     this.pageURL = "https://www.w3schools.com/html/html_iframe.asp";
     this.iframeTitle = "#main h1";
     this.iframeSelector = "iframe[title='W3Schools HTML Tutorial']";
-    this.iframeURL = "https://www.w3schools.com/css/";
+    this.cssFrameUrl = "https://www.w3schools.com/css/";
   }
 
   public visit(): void {
@@ -28,7 +28,7 @@ export class IframePage {
 
   private frameNavigated(): void {
     cy.frameLoaded(this.iframeSelector, {
-      url: this.iframeURL,
+      url: this.cssFrameUrl,
     });
   }
 }
