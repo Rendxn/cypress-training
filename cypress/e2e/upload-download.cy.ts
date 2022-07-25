@@ -1,17 +1,28 @@
-import { UploadPage } from "../page";
+import { UploadPage, DownloadPage } from "../page";
+import { join } from "path";
 
-describe("when given a file", () => {
+describe("when using files", () => {
   let uploadPage: UploadPage;
-  const filename = "example.json";
+  let downloadPage: DownloadPage;
+  const uploadFilename = "example.json";
+  const downloadFilename = "sampleFile.jpeg";
+  const downloadFolder = "cypress/downloads";
+  const downloadPathname = join(downloadFolder, downloadFilename);
 
   before("visit upload demo site", () => {
     uploadPage = new UploadPage();
-    uploadPage.visitUploadSite();
+    downloadPage = new DownloadPage();
   });
 
   it("should be uploaded", () => {
-    uploadPage.uploadFile(filename);
+    uploadPage.visitUploadSite();
+    uploadPage.uploadFile(uploadFilename);
+    uploadPage.getUploadedFileName().should("contain.text", uploadFilename);
+  });
 
-    uploadPage.getUploadedFileName().should("contain.text", filename);
+  it("should be downloaded", () => {
+    downloadPage.visitDownloadSite();
+    downloadPage.downloadFile();
+    cy.readFile(downloadPathname).should("exist");
   });
 });
