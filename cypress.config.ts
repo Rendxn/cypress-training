@@ -20,6 +20,7 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       config.defaultCommandTimeout = 20000;
       config.responseTimeout = 20000;
+      config.chromeWebSecurity = false;
 
       return config;
     },
