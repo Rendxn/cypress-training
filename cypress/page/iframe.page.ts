@@ -23,9 +23,10 @@ export class IframePage {
 
   public goToCssPageInFrame(): void {
     cy.iframe(this.iframeSelector).find(this.cssNavElement).click();
+    this.frameNavigated();
   }
 
-  public frameNavigated(): void {
+  private frameNavigated(): void {
     cy.frameLoaded(this.iframeSelector, {
       url: this.iframeURL,
     });

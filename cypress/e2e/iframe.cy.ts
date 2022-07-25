@@ -14,7 +14,6 @@ describe("iframe navigation and meta", () => {
 
   it("should navigate inside iframe", () => {
     iframePage.goToCssPageInFrame();
-    iframePage.frameNavigated();
     iframePage.getFrameTitle().should("eq", "CSS Tutorial");
   });
 });
